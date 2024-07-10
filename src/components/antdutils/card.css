@@ -1,0 +1,25 @@
+.card-content{
+    font-size: 24px;
+    font-weight: 600;
+    color: #416165;
+}
+.user-avtar{
+    display: flex;
+    justify-content: space-between;
+}
+.user-details{
+    font-size: 15px;
+    color: #0B3948;
+    font-weight: 500;
+}
+
+@media (max-width:500px){
+    .card-content{
+        font-size: 14px;
+        font-weight: 500;
+        color: #416165;
+    }
+    .user-avtar p{
+        font-size: 10px;
+    }
+}

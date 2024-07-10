@@ -1,0 +1,12 @@
+.barchart{
+    width: 100%;
+    background-color: rgb(231, 231, 254);
+
+}
+
+@media (max-width:500px){
+    .barchart{
+        width: 94vw;
+    }
+    
+}

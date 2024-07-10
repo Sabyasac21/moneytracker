@@ -1,0 +1,135 @@
+
+.expense-edit-form{
+    background-color: rgb(202, 247, 202);
+    border-radius: 14px;
+    padding: 10px 20px;
+    width: 'auto';
+}
+.form-fields{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.date-picker{
+    display: flex;
+    flex-direction: column;
+    font-size: 28px;
+}
+.date-picker label{
+    margin-bottom: 10px;
+}
+
+.date-picker input{
+    padding: 12px 8px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid rgb(172, 170, 170);
+    margin-bottom: 8px;
+}
+
+.date-picker input:focus{
+    border: 1px solid rgb(100, 100, 255);
+}
+
+
+.amount-section{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.add-amt{
+    display: flex;
+    flex-direction: column;
+}
+.deduct-amt{
+    display: flex;
+    flex-direction: column;
+}
+
+.add-amt label{
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+.deduct-amt label{
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.add-amt input{
+    padding: 12px 8px;
+    border-radius: 12px;
+    outline: none;
+    font-size: 18px;
+    border: 1px solid rgb(207, 205, 205);
+    /* width: 30px; */
+}
+.add-amt input:focus{
+    border: 2px solid rgb(100, 100, 255);
+}
+.deduct-amt input{
+    padding: 12px 8px;
+    border-radius: 12px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid rgb(207, 205, 205);
+    /* width: 30px; */
+}
+
+.deduct-amt input:focus{
+    border: 2px solid rgb(100, 100, 255);
+}
+
+.category-section{
+    display: flex;
+    flex-direction: column;
+    font-size: 28px;
+}
+
+.category-section label{
+    margin-bottom: 8px;
+}
+
+.category-section input{
+    padding: 12px 8px;
+    border-radius: 8px;
+    border: 1px solid rgb(170, 169, 169);
+    font-size: 18px;
+    outline: none;
+}
+
+.category-section input:focus{
+    border: 2px solid rgb(100, 100, 255);
+
+}
+
+.submit-btn{
+    padding: 28px 0;
+}
+
+.submit-btn button{
+    padding: 18px 16px ;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid rgb(167, 166, 166);
+}
+
+.submit-btn button:active{
+    border: 1px solid rgb(111, 111, 251);
+}
+
+.submit-btn button:hover{
+    background-color: rgb(206, 237, 247);
+    border: 1px solid rgb(206, 206, 254);
+}
+
+.seperator{
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 10px 18px;
+    font-size: 24px;
+}

@@ -1,0 +1,8 @@
+.status-container{
+    width: 100vw;
+    
+}
+.status-charts-container{
+    display: flex;
+    justify-content: space-between;
+}
