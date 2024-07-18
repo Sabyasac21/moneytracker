@@ -19,7 +19,7 @@ const App = ({refreshData}) => {
   return (
     <Modal
       width='auto'
-      title={<span style={{fontSize:'28px', color:'#123F1E'}}>{(modalOpen&&'enter Your Details')|| (expensFormOpen&&(incomePath?'Edit Your Income':'Edit Your Expense'))}</span>}
+      title={<span style={{fontSize:'28px', color:'#123F1E'}}>{(modalOpen&&'Enter Your Details')|| (expensFormOpen&&(incomePath?'Edit Your Income':'Edit Your Expense'))}</span>}
       centered
       open={modalOpen || expensFormOpen}
       footer={null}
