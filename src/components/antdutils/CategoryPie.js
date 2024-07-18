@@ -1,7 +1,7 @@
 import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
-const COLORS = ["lightgreen", "lightgrey"];
+const COLORS = ["purple", "lightgrey"];
 
 const CategoryPie = (props) => {
   let data = [props.value];
