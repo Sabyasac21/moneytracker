@@ -14,7 +14,7 @@ const generateColors = (numColors) => {
   return chroma.scale(['#f00', '#0f0', '#00f']).mode('lch').colors(numColors);
 };
 const CustomPieChart = (props) => {
-  const data = props.value;
+  let data = props.value;
   const colors = generateColors(data.length)
   const tooltipFormatter = (value, name, props) => {
     return [`${Math.round(value)}%`, `${props.payload.type}`]; // Format as "value" and "name"

@@ -39,7 +39,8 @@ const App = () => {
         className="header-main"
           style={{
             position: "sticky",
-            padding: "50px 20px",
+            padding: "10px 20px",
+            background:'#F4F2F8',
             top: 0,
             zIndex: 1,
             width: "100%",
@@ -53,18 +54,19 @@ const App = () => {
           <Link to="/">
             <div
               className="demo-logo"
-              style={{ display: "flex", justifyContent: "center" }}
+              style={{ display: "flex", justifyContent: "center", marginRight:'12px'}}
             >
-              <img style={{ height: "90px" }} src={logo} alt="logo" />
+              <img style={{ height: "70px" }} src={logo} alt="logo" />
             </div>
           </Link>
 
           <Menu
-            theme="dark"
             mode="horizontal"
             defaultSelectedKeys={["2"]}
             style={{
               flex: 1,
+              backgroundColor:'inherit',
+              border:'none',
               fontSize: "24px",
               justifyContent: "flex-end",
             }}
@@ -98,6 +100,8 @@ const App = () => {
               minHeight: "100vh",
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
+              padding:'10px 8px',
+              overflow: 'hidden'
             }}
           >
             <Routes>

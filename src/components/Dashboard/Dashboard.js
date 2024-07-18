@@ -158,10 +158,10 @@ const App = () => {
               </h1>}
 
               <div className="chart-stats">
-                {type != "Status" && !isEmpty && (
+                {type != "Status" &&  (
                   <div className="col-chart">
                     <ColumnChart value={expense} />
-                    <div style={{ }}>
+                    <div style={{padding:'20px 0' }}>
                       <Button
                         onClick={handlePrev}
                         style={{ marginRight: "5px" }}
@@ -187,7 +187,7 @@ const App = () => {
                       <div className="category-brief-cont">
                         {categoryData.map((category, index) => (
                           <div className="cat-brief-brief">
-                            <span className="cat-brief-brief-col" style={{backgroundColor:colors[index % colors.length]}}></span>
+                            <span className="cat-brief-brief-col" style={{backgroundColor:colors[index % colors.length], marginRight:'8px'}}></span>
                             <h3>
                               {category.type.slice(0, 1).toUpperCase() +
                                 category.type.slice(1)}
@@ -213,6 +213,7 @@ const App = () => {
                   <h1 style={{ textAlign: "center", color: "darkpurple" }}>
                     Weekly category
                   </h1>
+                 
                   <StatisticCard category={categoryData} />
                 </div>
               )}

@@ -26,7 +26,7 @@ const ColumnChart = (props) => {
   };
 
   return (
-    <div style={{ width: "100%", height: 320 }}>
+    <div style={{ width: "100%", height: 360 }}>
       {data && <Column {...config} />}
     </div>
   );
