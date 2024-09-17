@@ -8,7 +8,7 @@ const App = (props) => (
     style={{
       width: 'auto',
       height: "auto",
-      backgroundColor: "#E3E3DE",
+      backgroundColor: "rgba(227, 227, 222, 0.6)",
       boxShadow: "0 4px 18px rgba(0, 0, 0, 0.2)",
       marginRight:'1rem',
       marginBottom:'1rem'

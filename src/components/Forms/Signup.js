@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 import { setAuthorized, setShowModal } from "../../Redux/Slice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import './signup.css'
 
 const App = () => {
@@ -10,11 +10,12 @@ const App = () => {
   const dispatch = useDispatch();
   const pathname = useLocation();
   const path = pathname.pathname;
+  const isAuth = useSelector((state) => state.handleApp.authorized);
   const onFinish = async (values) => {
     if (path === "/register") {
       try {
         const { username, [" email"]: email, password } = values;
-        const response = await fetch("https://dailyexpense-backend.onrender.com/register", {
+        const response = await fetch("http://localhost:3001/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -38,10 +39,12 @@ const App = () => {
       } catch (error) {
         console.error("Error registering user:", error.message);
       }
-    } else {
+    } else if (path==='/login'){
       try {
         const { [" email"]: email, password } = values;
-        const response = await fetch("https://dailyexpense-backend.onrender.com/login", {
+        console.log(email, password, values);
+        
+        const response = await fetch("http://localhost:3001/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password }),
@@ -54,10 +57,15 @@ const App = () => {
         localStorage.setItem('auth-token', data.token);
         console.log("Registration successful", data);
         dispatch(setShowModal(false));
+        // dispatch()
         navigate(`/dashboard/income/${data.userId}`)
       } catch (error) {console.log('error occured', error);}
     }
+    console.log(isAuth);
+    
     dispatch(setAuthorized(true))
+    // console.log(isAuth, 'from signup page');
+    
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -66,7 +74,6 @@ const App = () => {
   return (
     <Form
       name="basic"
-      theme="dark"
       labelCol={{
         span: 8,
       }}

@@ -19,7 +19,7 @@ const CategoryPie = (props) => {
           startAngle={90}
           endAngle={-270}
           data={data}
-          cx="50%"
+          cx="32%"
           cy="50%"
           innerRadius={60}
           outerRadius={80}

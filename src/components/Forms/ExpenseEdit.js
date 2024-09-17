@@ -35,12 +35,12 @@ const ExpenseEdit = ({ refreshData }) => {
   };
   const handleExpenseFormSubmit = async (e) => {
     e.preventDefault();
+    
     try {
-      console.log(userExpenseEdit, "userExpense");
       const { date, add_amt: amount, category, type } = userExpenseEdit;
-      console.log(date, amount, category, type);
+     
       const response = await fetch(
-        `https://dailyexpense-backend.onrender.com/dashboard/add-expense/${userId}`,
+        `http://localhost:3001/dashboard/add-expense/${userId}`,
         {
           method: "POST",
           headers: {

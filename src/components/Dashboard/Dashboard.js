@@ -10,9 +10,9 @@ import {
 } from "@ant-design/icons";
 import { Button, Layout, Menu, Statistic, theme } from "antd";
 import ColumnChart from "./Charts/ColumnCharts";
-import { useDispatch } from "react-redux";
-import { setShowExpenseForm } from "../../Redux/Slice";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowExpenseForm, setShowModal } from "../../Redux/Slice";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import StatisticCard from "../antdutils/Stats";
 import Status from "./Status";
 
@@ -27,6 +27,8 @@ const App = () => {
   const [dateSpan, setDateSpan] = useState([]);
   const [monday, setMonday] = useState(new Date());
   const dispatch = useDispatch();
+  const isAuth = useSelector((state) => state.handleApp.authorized);
+  const navigate = useNavigate()
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -37,15 +39,22 @@ const App = () => {
     : location.pathname.includes("/dashboard/status")
     ? "Status"
     : "Expense";
-
+  console.log(isAuth, 'from  dashboard....');
+  
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `https://dailyexpense-backend.onrender.com/dashboard/weekly-expenses/${userId}?type=${type}&date=${monday}`,
+        `http://localhost:3001/dashboard/weekly-expenses/${userId}?type=${type}&date=${monday}`,
         {
           method: "GET",
+          headers: { 
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("auth-token")}`
         }
+      }
       );
+      console.log(response, 'chcecking');
+      
       if (!response.ok) {
         throw new Error(`Error: ${response.statusText}`);
       }
@@ -59,6 +68,7 @@ const App = () => {
       console.error("Error fetching expenses:", error);
     }
   };
+  console.log(totExpense, categoryData);
 
   const handleExpenseEdit = () => {
     dispatch(setShowExpenseForm(true));
@@ -73,6 +83,11 @@ const App = () => {
     chDate.setDate(monday.getDate() + 7);
     setMonday(chDate);
   };
+
+  const handleDeleteExpenses = ()=>{
+    dispatch(setShowModal(true))
+    navigate(`/dashboard/${type}/${userId}/delete`)
+  }
   const generateColors = (numColors) => {
     return chroma.scale(['#f00', '#0f0', '#00f']).mode('lch').colors(numColors);
   };
@@ -152,10 +167,13 @@ const App = () => {
           </Sider>
           <Content className="dashboard-inner-content">
             <div className="charts-dash">
+              <div style={{position:'relative'}}>
               {type!='Status'&&<h1 style={{ textAlign: "center", padding: "12px 0" }}>
                 Weekly {type === "Income" ? "income" : "expense"} from:{" "}
                 <span style={{color:'purple'}}>{dateSpan[0]} - {dateSpan[1]}</span>
               </h1>}
+              <Button onClick={handleDeleteExpenses} style={{position:'absolute', top:23, right:20}}>Delete</Button>
+              </div>
 
               <div className="chart-stats">
                 {type != "Status" &&  (
@@ -214,7 +232,7 @@ const App = () => {
                     Weekly category
                   </h1>
                  
-                  <StatisticCard category={categoryData} />
+                  <StatisticCard category={categoryData} totalExp = {totExpense}/>
                 </div>
               )}
             </div>

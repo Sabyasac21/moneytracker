@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setShowExpenseForm, setShowModal } from "../../Redux/Slice";
 import Signup from "../Forms/Signup";
 import ExpenseEdit from "../Forms/ExpenseEdit";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import AmountDelete from "../Forms/AmountDelete";
 const App = ({refreshData}) => {
   const dispatch = useDispatch();
   const modalOpen = useSelector((state) => state.handleApp.showModal);
@@ -14,7 +15,9 @@ const App = ({refreshData}) => {
     dispatch(setShowExpenseForm(false))
   }
   const location = useLocation()
-  const incomePath = location.pathname.includes('/dashboard/income')
+  const incomePath = location.pathname.includes('/dashboard/income');
+  const userId = useParams()
+
   
   return (
     <Modal
@@ -28,8 +31,8 @@ const App = ({refreshData}) => {
     >
       <div>{
         // modalOpen?(<Signup/>) : expensFormOpen?(<ExpenseEdit/>) : ('')
-        (modalOpen&&<Signup/>) ||
-        // <Signup/>
+        (modalOpen&&(location.pathname==='/register'||location.pathname==='/login')&&<Signup/>) ||
+        (modalOpen && (location.pathname.includes('/delete')&&<AmountDelete/>))||
         (expensFormOpen&&<ExpenseEdit refreshData={refreshData}/>)
         
         }</div>

@@ -15,7 +15,7 @@ const Status = () => {
   const fetchStatus = async () => {
     console.log(today, 'see here');
     const response = await fetch(
-      `https://dailyexpense-backend.onrender.com/dashboard/status/${userId}?date=${today}`,
+      `http://localhost:3001/dashboard/status/${userId}?date=${today}`,
       {
         method: "GET",
         headers: { "Content-Type": "application/json" },
